@@ -12,7 +12,7 @@ import java.util.Random;
 
 public class View extends ApplicationAdapter {
 	SpriteBatch batch;
-	Texture bg, archer, mage, monk, peasant, pikeman, rouge, sharpshooter;
+	Texture bg, archer, mage, monk, peasant, pikeman, rogue, sharpshooter;
 	Music music;
 	Model model;
 	
@@ -27,7 +27,7 @@ public class View extends ApplicationAdapter {
 		monk = new Texture("creatures/monk.png");
 		peasant = new Texture("creatures/peasant.png");
 		pikeman = new Texture("creatures/pikeman.png");
-		rouge = new Texture("creatures/rouge.png");
+		rogue = new Texture("creatures/rogue.png");
 		sharpshooter = new Texture("creatures/sharpshooter.png");
 
 		music = Gdx.audio.newMusic(Gdx.files.internal("music/theme" + new Random().nextInt(4) + ".mp3"));
@@ -44,13 +44,13 @@ public class View extends ApplicationAdapter {
 			int direct = 1;
 			direct = Model.army1.contains(creature)? 1: -1;
 			Texture creaturePic = switch (creature.getName()) {
-				case "Арбалетчик" -> archer;
-				case "Маг" -> mage;
-				case "Монах" -> monk;
-				case "Крестьянин" -> peasant;
-				case "Копейщик" -> pikeman;
-				case "Снайпер" -> sharpshooter;
-				case "Разбойник" -> rouge;
+				case "Archer" -> archer;
+				case "Mage" -> mage;
+				case "Monk" -> monk;
+				case "Peasant" -> peasant;
+				case "Pikeman" -> pikeman;
+				case "Sharpshooter" -> sharpshooter;
+				case "Rogue" -> rogue;
 				default -> peasant;
 			};
 			int dx = Gdx.graphics.getWidth() / 10;
@@ -86,7 +86,7 @@ public class View extends ApplicationAdapter {
 		monk.dispose();
 		peasant.dispose();
 		pikeman.dispose();
-		rouge.dispose();
+		rogue.dispose();
 		sharpshooter.dispose();
 	}
 }

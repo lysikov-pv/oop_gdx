@@ -79,8 +79,8 @@ public class Model {
         }
         else
         {
-            Loger.buffer.add(String.format("Конец игры. Победила армия %s!",
-                    (whoWin() == 1) ? "зеленых" : "синих"));
+            Loger.buffer.add(String.format("Game end. %s army win!",
+                    (whoWin() == 1) ? "Left" : "Right"));
             Loger.printBuffer();
             return true;
         }

@@ -1,6 +1,7 @@
 package com.mygdx.oop.creatures;
 
 import com.mygdx.oop.Loger;
+import com.mygdx.oop.Model;
 
 import java.util.ArrayList;
 
@@ -44,12 +45,12 @@ public abstract class Warrior extends Creature {
         if (left.x < 1)   leftFree   = false;
         if (right.x > 10) rightFree  = false;
 
-//        for (Creature creature: allCreatures) {
-//            if(creature.getPosition().equals(top))    topFree    = false;
-//            if(creature.getPosition().equals(bottom)) bottomFree = false;
-//            if(creature.getPosition().equals(left))   leftFree   = false;
-//            if(creature.getPosition().equals(right))  rightFree  = false;
-//        }
+        for (Creature creature: Model.allCreatures) {
+            if(creature.getPosition().equals(top))    topFree    = false;
+            if(creature.getPosition().equals(bottom)) bottomFree = false;
+            if(creature.getPosition().equals(left))   leftFree   = false;
+            if(creature.getPosition().equals(right))  rightFree  = false;
+        }
 
         double[] distances = {top.getDistance(target),
                 bottom.getDistance(target),
@@ -96,14 +97,14 @@ public abstract class Warrior extends Creature {
             Creature nearestEnemy = findNearest(enemies);
             if (canAttack(nearestEnemy)) {
                 int qtyDies = nearestEnemy.getDamage(minDamage, maxDamage, qty, attack);
-                Loger.buffer.add(getInfo() + String.format(" атаковал «%s #%d» [\u26C9 %d(-%d)]",
+                Loger.buffer.add(getInfo() + String.format(" attack '%s #%d' [Qty: %d(-%d)]",
                         nearestEnemy.name,
                         nearestEnemy.number,
                         nearestEnemy.qty + qtyDies,
                         qtyDies));
             } else {
                 goTo(nearestEnemy.getPosition());
-                Loger.buffer.add(getInfo() + String.format(" идет к «%s #%d»",
+                Loger.buffer.add(getInfo() + String.format(" go to '%s #%d'",
                         nearestEnemy.name,
                         nearestEnemy.number));
             }

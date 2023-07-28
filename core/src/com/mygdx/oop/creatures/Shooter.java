@@ -42,13 +42,13 @@ public abstract class Shooter extends Creature {
             int qtyDies = nearestEnemy.getDamage(minDamage, maxDamage, qty, attack);
             boolean savedShoot = false;
             for (Creature allie : allies) {
-                if (allie.name.equals("Крестьянин") && allie.action.equals(CreaturesActions.waiting)) {
+                if (allie.name.equals("Peasant") && allie.action.equals(CreaturesActions.waiting)) {
                     savedShoot = true;
                     allie.action = CreaturesActions.givesArrow;
                     break;
                 }
             }
-            Loger.buffer.add(getInfo() + String.format(" атаковал «%s #%d» [\u26C9 %d(-%d)]; У него осталось стрел: %d(-%d)",
+            Loger.buffer.add(getInfo() + String.format(" attack '%s #%d' [Qty: %d(-%d)]; Shots left: %d(-%d)",
                     nearestEnemy.name,
                     nearestEnemy.number,
                     nearestEnemy.qty + qtyDies,

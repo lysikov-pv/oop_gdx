@@ -1,7 +1,5 @@
 package com.mygdx.oop.creatures;
 
-import com.mygdx.oop.Loger;
-
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -71,7 +69,7 @@ public abstract class Creature implements CreaturesInterface {
     }
 
     public String toString() {
-        return String.format("«%s #%d» [\u26C9 %d]",
+        return String.format("'%s #%d' [Qty: %d]",
                 name, number, qty);
     }
 
@@ -80,16 +78,11 @@ public abstract class Creature implements CreaturesInterface {
     }
 
     public String getInfo() {
-        return String.format("«%s #%d» [\u26C9 %d]",
+        return String.format("'%s #%d' [Qty: %d]",
                 name, number, qty);
     }
 
     public void step(ArrayList<Creature> enemies, ArrayList<Creature> allies) {
-        Creature nearestEnemy = findNearest(enemies);
-        Loger.buffer.add(getInfo() + String.format(" -> Ближайшее существо: %s #%d; Растояние: %d",
-                nearestEnemy.name,
-                nearestEnemy.number,
-                (int)Math.ceil(position.getDistance(nearestEnemy.position))));
     }
 
     private int sign(int x) {
